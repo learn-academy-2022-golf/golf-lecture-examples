@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Count from './components/Count'
-import 'App.css'
+import './App.css'
 // import section^
 
 // functional component v
@@ -8,6 +8,8 @@ const App = () => {
   let [userNames, setUserNames] = useState(['diverStone', 'brandySavage', 'alf', 'anon123'])
 
   let [userNameIndex, setUserNameIndex] = useState(0)
+
+  let [color, setColor] = useState("purple")
 
   const randomUserNameIndex = () => {
     let randomNum = Math.floor(Math.random() * userNames.length)
@@ -19,7 +21,7 @@ const App = () => {
     <>
       <Count/>
       
-      <h2 onClick={randomUserNameIndex}> Hello {userNames[userNameIndex]}</h2>
+      <h2 onClick={randomUserNameIndex} style={{backgroundColor: color}}> Hello {userNames[userNameIndex]}</h2>
     </>
   )
 }

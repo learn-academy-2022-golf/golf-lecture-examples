@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import Count from './components/Count'
+import 'App.css'
 // import section^
 
 // functional component v
@@ -15,6 +17,8 @@ const App = () => {
   // the functional return / display data / jsx section V
   return (
     <>
+      <Count/>
+      
       <h2 onClick={randomUserNameIndex}> Hello {userNames[userNameIndex]}</h2>
     </>
   )

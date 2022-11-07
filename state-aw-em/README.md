@@ -27,13 +27,15 @@ Inside of the JSX we can use curly brackets to break back into Javascript.
 ```js
 import React, { useState } from 'react' 
 
-// alwasy inside of a functional component
+// always inside of a functional component
 // at the top most level
 let [count, setCount] = useState(0)
 
   const increment = () => {
     setCount(count + 1)
   }
+
+
 return (
   <>
     <p>the count is: {count} </p>

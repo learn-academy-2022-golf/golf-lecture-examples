@@ -1,0 +1,44 @@
+  [1m[35m (265.0ms)[0m  [1m[35mCREATE DATABASE "active_record_intro_development" ENCODING = 'unicode'[0m
+  [1m[35m (127.6ms)[0m  [1m[35mCREATE DATABASE "active_record_intro_test" ENCODING = 'unicode'[0m
+  [1m[35m (29.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (7.7ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5394579282618079995)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateSchedules (20221205191240)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (13.5ms)[0m  [1m[35mCREATE TABLE "schedules" ("id" bigserial primary key, "day" date, "event" character varying, "day_of_the_week" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (2.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221205191240"]]
+  [1m[36mTRANSACTION (7.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (8.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-12-05 19:17:43.607152"], ["updated_at", "2022-12-05 19:17:43.607152"]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(5394579282618079995)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mSchedule Load (4.6ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules"[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSchedule Create (5.8ms)[0m  [1m[32mINSERT INTO "schedules" ("day", "event", "day_of_the_week", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["day", "2022-12-05"], ["event", "Kahoot"], ["day_of_the_week", "Monday"], ["created_at", "2022-12-05 19:42:29.661031"], ["updated_at", "2022-12-05 19:42:29.661031"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSchedule Create (1.0ms)[0m  [1m[32mINSERT INTO "schedules" ("day", "event", "day_of_the_week", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["day", "2022-12-08"], ["event", "Whiteboarding"], ["day_of_the_week", "Thursday"], ["created_at", "2022-12-05 19:47:04.366627"], ["updated_at", "2022-12-05 19:47:04.366627"]]
+  [1m[36mTRANSACTION (3.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSchedule Create (0.5ms)[0m  [1m[32mINSERT INTO "schedules" ("day", "event", "day_of_the_week", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["day", "2022-12-09"], ["event", "Assessment"], ["day_of_the_week", "Friday"], ["created_at", "2022-12-05 19:47:54.415149"], ["updated_at", "2022-12-05 19:47:54.415149"]]
+  [1m[36mTRANSACTION (3.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSchedule Create (0.3ms)[0m  [1m[32mINSERT INTO "schedules" ("day", "event", "day_of_the_week", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["day", "2022-12-07"], ["event", "Oso"], ["day_of_the_week", "Wednesday"], ["created_at", "2022-12-05 19:48:37.519903"], ["updated_at", "2022-12-05 19:48:37.519903"]]
+  [1m[36mTRANSACTION (2.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mSchedule Load (1.4ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules"[0m
+  [1m[36mSchedule Load (0.5ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE "schedules"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mSchedule Load (1.0ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE "schedules"."day_of_the_week" = $1[0m  [["day_of_the_week", "Wednesday"]]
+  [1m[36mSchedule Load (0.8ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE "schedules"."day_of_the_week" = $1 ORDER BY "schedules"."id" ASC LIMIT $2[0m  [["day_of_the_week", "Wednesday"], ["LIMIT", 1]]
+  [1m[36mSchedule Load (0.3ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" ORDER BY "schedules"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mSchedule Load (1.2ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules"[0m
+  [1m[36mSchedule Load (1.0ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE "schedules"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mSchedule Update (9.5ms)[0m  [1m[33mUPDATE "schedules" SET "event" = $1, "updated_at" = $2 WHERE "schedules"."id" = $3[0m  [["event", "Oso's Birthday"], ["updated_at", "2022-12-05 21:35:22.062928"], ["id", 4]]
+  [1m[36mTRANSACTION (2.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mSchedule Load (1.7ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules"[0m
+  [1m[36mSchedule Load (0.3ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" ORDER BY "schedules"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mSchedule Destroy (2.2ms)[0m  [1m[31mDELETE FROM "schedules" WHERE "schedules"."id" = $1[0m  [["id", 1]]
+  [1m[36mSchedule Load (0.5ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules"[0m

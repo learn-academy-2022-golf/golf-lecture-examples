@@ -1,0 +1,51 @@
+  [1m[35m (259.9ms)[0m  [1m[35mCREATE DATABASE "associations_development" ENCODING = 'unicode'[0m
+  [1m[35m (139.2ms)[0m  [1m[35mCREATE DATABASE "associations_test" ENCODING = 'unicode'[0m
+  [1m[35m (42.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (6.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT pg_try_advisory_lock(352188572679646395)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateTeams (20221206223236)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (23.0ms)[0m  [1m[35mCREATE TABLE "teams" ("id" bigserial primary key, "name" character varying, "city" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (2.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221206223236"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreatePlayers (20221206223258)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (19.4ms)[0m  [1m[35mCREATE TABLE "players" ("id" bigserial primary key, "name" character varying, "position" character varying, "team_id" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20221206223258"]]
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (3.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (21.9ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-12-06 22:34:17.702429"], ["updated_at", "2022-12-06 22:34:17.702429"]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(352188572679646395)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTeam Create (8.1ms)[0m  [1m[32mINSERT INTO "teams" ("name", "city", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Lakers"], ["city", "LA"], ["created_at", "2022-12-06 22:38:39.253052"], ["updated_at", "2022-12-06 22:38:39.253052"]]
+  [1m[36mTRANSACTION (5.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTeam Create (0.8ms)[0m  [1m[32mINSERT INTO "teams" ("name", "city", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Clippers"], ["city", "LA"], ["created_at", "2022-12-06 22:38:53.272638"], ["updated_at", "2022-12-06 22:38:53.272638"]]
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTeam Create (5.0ms)[0m  [1m[32mINSERT INTO "teams" ("name", "city", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Warriors"], ["city", "SF"], ["created_at", "2022-12-06 22:39:15.655379"], ["updated_at", "2022-12-06 22:39:15.655379"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTeam Create (0.5ms)[0m  [1m[32mINSERT INTO "teams" ("name", "city", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Celtics"], ["city", "Boston"], ["created_at", "2022-12-06 22:39:39.970680"], ["updated_at", "2022-12-06 22:39:39.970680"]]
+  [1m[36mTRANSACTION (3.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTeam Create (0.8ms)[0m  [1m[32mINSERT INTO "teams" ("name", "city", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Knicks"], ["city", "NYC"], ["created_at", "2022-12-06 22:39:55.393862"], ["updated_at", "2022-12-06 22:39:55.393862"]]
+  [1m[36mTRANSACTION (9.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTeam Load (8.3ms)[0m  [1m[34mSELECT "teams".* FROM "teams"[0m
+  [1m[36mTeam Load (1.0ms)[0m  [1m[34mSELECT "teams".* FROM "teams" ORDER BY "teams"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPlayer Create (8.4ms)[0m  [1m[32mINSERT INTO "players" ("name", "position", "team_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Barret"], ["position", "Sml Fwd"], ["team_id", 5], ["created_at", "2022-12-06 22:44:11.922409"], ["updated_at", "2022-12-06 22:44:11.922409"]]
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTeam Load (4.2ms)[0m  [1m[34mSELECT "teams".* FROM "teams" WHERE "teams"."name" = $1[0m  [["name", "Lakers"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPlayer Create (0.9ms)[0m  [1m[32mINSERT INTO "players" ("name", "position", "team_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Lebron James"], ["position", "Pwr Fwd"], ["team_id", 1], ["created_at", "2022-12-06 22:47:51.210430"], ["updated_at", "2022-12-06 22:47:51.210430"]]
+  [1m[36mTRANSACTION (4.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPlayer Create (0.5ms)[0m  [1m[32mINSERT INTO "players" ("name", "position", "team_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Anthony Davis"], ["position", "center"], ["team_id", 1], ["created_at", "2022-12-06 22:48:48.413333"], ["updated_at", "2022-12-06 22:48:48.413333"]]
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mPlayer Load (1.4ms)[0m  [1m[34mSELECT "players".* FROM "players"[0m
+  [1m[36mPlayer Load (0.4ms)[0m  [1m[34mSELECT "players".* FROM "players" WHERE "players"."team_id" = $1[0m  [["team_id", 1]]

@@ -1,0 +1,9 @@
+
+
+<h1>All the Hikes!</h1>
+
+<% @hikes.each do |hike| %>
+ <h2> <%= link_to hike.name, hike_path(hike) %> </h2>
+<% end %>
+
+<%= link_to 'Add a Hike', new_hike_path %>

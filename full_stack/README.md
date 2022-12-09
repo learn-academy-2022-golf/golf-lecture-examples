@@ -7,8 +7,13 @@
   $  rails db:drop
   $  rails db:create
   $  rails g controller Hike 
-  $  rails g model Hike name:string hike_distance:float difficulty:integer
+  $  rails g model Hike name:string distance:float difficulty:integer
   $  rails db:migrate
+
+# Populate DB
+  > Hike.create name:"Torrey Pines", distance:3, difficulty:2
+  > Hike.create name:"Flat Rock", distance:5, difficulty:3
+  > Hike.create name:"Ho chi mihn - Blacks Beach", distance:1, difficulty:3
 
 # CRUD Action Read
 
@@ -105,8 +110,8 @@ to use the alias we append the rails built in keyword _path
   <%= form.label :name %>
   <%= form.text_field :name %>
 
-  <%= form.label :hike_distance%>
-  <%= form.text_field :hike_distance %>
+  <%= form.label :distance%>
+  <%= form.text_field :distance %>
 
   <%= form.label :difficulty%>
   <%= form.text_field :difficulty %>
@@ -119,7 +124,7 @@ to use the alias we append the rails built in keyword _path
   ### Controller
   ```ruby
 def create
-    @hike = Hike.create(name: params[:name], hike_distance: params[:hike_distance], difficulty: params[:difficulty])
+    @hike = Hike.create(name: params[:name], distance: params[:distance], difficulty: params[:difficulty])
     if @hike.valid?
       redirect_to hikes_path
     else

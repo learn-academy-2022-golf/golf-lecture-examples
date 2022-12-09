@@ -25,11 +25,15 @@
 Read -> Get -> 
 > Index  : To send back the ENTIRE list/ all instances of data available for the model being queried  
 > Show   : Sends back only ONE instance of the Model being queried
+
+Create -> Get -> 
 > New    : Sends over and HTML Form allows the user to fill out data to send to the database
-> Edit   : Sends over and HTML Form allows the user to fill out data to send to the database that updates an   instance 
 
 Create -> Post -> 
 > Create : takes data and adds it to the database, creating a new instance in the database 
+
+Update -> Get -> 
+> Edit   : Sends over and HTML Form allows the user to fill out data to send to the database that updates an   instance 
 
 Update -> Post, Put -> 
 > Update : Overwrites existing instance in the database

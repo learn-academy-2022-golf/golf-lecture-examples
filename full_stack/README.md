@@ -86,11 +86,13 @@ to use the alias we append the rails built in keyword _path
 > show.html.erb
 ```html
   <h1> Let's go on a hike </h1>
-  <%= @hike.name %>
-  <%= @hike.description %>
-  have you been on this hike? 
-  <%= @hike.hiked %>
-  <%= link_to 'back to all hikes', hikes_path %>
+  <h2> Name of the hike is <%= @hike.name %> </h2>
+
+  <h3> The length of the hike is <%= @hike.hike_distance %> miles</h3>
+
+  <h3> Out of 5 the difficulty rating is <%= @hike.difficulty %></h3>
+
+  <%= link_to 'Back to all hikes', hikes_path %>
 ```
 
 # CRUD Action - CREATE
@@ -137,3 +139,54 @@ def create
   ### Views
   N/A
 
+## Private 
+- Private is a keyword in Ruby that restricts the scope of where a method can be called. Since strong params are only meant to be used as arguments to controller methods, we can list them as private to the controller class. That way there is no chance they can be called from somewhere else in the program.
+ ```ruby
+  class HikeController <
+    # Public facing code goes here
+  private
+    # Hidden private code goes here
+  end
+```
+
+
+## Strong Params 
+- Strong params have two methods: require and permit. The require method does exactly what you think in requiring the attributes passed in to be present in the create or update methods. The permit method allows certain items to be present but if they are not present, that is still okay. But attributes that are not listed in the strong params will not be allowed to proceed.
+
+```ruby 
+private
+
+  def exercise_params
+    params.require(:exercise).permit(:activity, :description)
+  end
+
+```
+
+## Refactor
+
+#### Controller
+```ruby
+def new
+  @hike = Hike.new
+end
+```
+#### View
+new.html.erb
+```ruby
+<h3>Add a new Hike</h3>
+
+<%= form_with model: @hike do |form|  %>
+
+ <%= form.label :name %>
+  <%= form.text_field :name %>
+
+  <%= form.label :distance%>
+  <%= form.text_field :distance %>
+
+  <%= form.label :difficulty%>
+  <%= form.text_field :difficulty %>
+<br>
+  <%= form.submit 'Add Hike'%>
+
+<% end %>
+```

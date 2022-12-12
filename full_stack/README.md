@@ -190,3 +190,63 @@ new.html.erb
 
 <% end %>
 ```
+
+# CRUD Action Update
+## Edit Method
+  ### Controller
+```ruby
+ def edit
+  @hike = Hike.find(params[:id])
+ end
+``` 
+
+  ### Route
+  `get 'hikes/edit' => 'hike#edit', as: edit_hike `
+  ### View
+  ```ruby
+<h3>Add a new Hike</h3>
+
+<%= form_with model: @hike, method: :patch do |form|  %>
+
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+  <br>
+  <%= form.label :hike_distance%>
+  <%= form.text_field :hike_distance %>
+ <br>
+  <%= form.label :difficulty%>
+  <%= form.text_field :difficulty %>
+<br>
+  <%= form.submit 'Edit Hike'%>
+
+<% end %>
+```
+## Update Method
+  ### Controller
+  ```ruby
+  def update
+    @hike = Hike.find(params[:id])
+    @hike.update(hike_params)
+  end
+```
+
+  ### Route
+  `patch 'hikes/:id' => 'hike#update' `
+  ### View
+  N/A
+
+
+# CRUD Action Delete
+
+  ### Controller
+  ```ruby
+  def destroy
+  
+  end
+```
+  ### Route
+  ` delete 'hikes/:id' => 'hike#destroy' `
+  ### View
+  <%= link_to 'Delete Hike', delete_hike_path(@hike), data: { turbo_method: :delete, turbo_confirm: 'Are you sure you want to delete this hike?'} %>
+
+

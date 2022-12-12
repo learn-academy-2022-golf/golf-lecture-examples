@@ -1,0 +1,18 @@
+<h3>Add a new Hike</h3>
+
+<%= form_with model: @hike, method: :patch do |form|  %>
+
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+  <br>
+  <%= form.label :hike_distance%>
+  <%= form.text_field :hike_distance %>
+  <br>
+  <%= form.label :difficulty%>
+  <%= form.text_field :difficulty %>
+  <br>
+  <%= form.submit 'Edit Hike'%>
+ 
+
+<% end %>
+ <%= button_to 'Delete item', delete_hike_path(@hike), method: :delete, form: { data: { turbo_confirm: 'Are you sure?' } } %>
